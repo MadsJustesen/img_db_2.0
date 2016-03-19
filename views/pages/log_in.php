@@ -7,9 +7,9 @@
 </head>
 <body>
 
-	<h1>Log In</h1>
-	<div class="container">
-		<form method="POST" action="">
+	<div class="container container-login">
+		<h1>Log In</h1>
+		<form method="POST" action="log_in">
 			<table class="table-form">
 				<tr>
 					<td><label>Brugernavn: </label></td>

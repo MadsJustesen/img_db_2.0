@@ -8,14 +8,10 @@
 <body>
 	<?php 
 	require '../views/header.php';
-	
-	if(!($_SESSION["logged_in"])) {
-		header('Location: log_in.php');
-	}
 	?>
 	
-	<div class="container">
-		<h3>Seneste billeder</h3>
+	<div class="container container-main">
+		<h2>Seneste billeder</h2>
 		<p class= "image-title">En super heeelt</p>
 		<img src="assets/img/superhero_gif.gif" class="latest-images">
 		<p class= "image-title">Et blad</p>

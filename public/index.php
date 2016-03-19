@@ -40,11 +40,13 @@ $container->bindArguments('App\\Model\\User', ['db' => $db]);
 **************/
 
 $router = new Router();
-$router->addRoute('GET', '/', ['App\\Controller\\SessionController', "newSession"]);
-$router->addRoute('GET', '/add_user', ['App\\Controller\\UserController', "addUser"]);
+$router->addRoute('GET', '/',			['App\\Controller\\SessionController',	"redirect"]);
+$router->addRoute('GET', '/log_in',		['App\\Controller\\SessionController',	"newSession"]);
+$router->addRoute('GET', '/log_out',	['App\\Controller\\SessionController',	"destroy"]);
+$router->addRoute('GET', '/add_user',	['App\\Controller\\UserController', 	"addUser"]);
 
-$router->addRoute('POST', '/', ['App\\Controller\\SessionController', "create"]);
-$router->addRoute('POST', '/add_user', ['App\\Controller\\UserController', "create"]);
+$router->addRoute('POST', '/log_in',	['App\\Controller\\SessionController', 	"create"]);
+$router->addRoute('POST', '/add_user',	['App\\Controller\\UserController', 	"create"]);
 
 // Convert i.e. "/foo%40bar?id=1" to "/foo@bar"
 $uri = rawurldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
