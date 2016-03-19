@@ -11,6 +11,11 @@ h1 {
 	text-align: center;
 }
 
+.center {
+	display: table;
+	margin: 0 auto;
+}
+
 /* PAGE HEADER */
 .page-header ul {
 	list-style-type: none;
@@ -47,7 +52,15 @@ form {
 }
 
 .table-form {
-	margin: 0 auto;
+	width: 100%;
+}
+
+.form-label {
+	text-align: left;
+}
+
+.form-input {
+	text-align: center;
 }
 
 /* TABLES */
@@ -72,23 +85,27 @@ th, td {
 	background-color: #f2f2f2
 }
 
+.table-list {
+	border: 2px solid #4CAF50;
+}
+
 /* CONTAINER */
 .container {
-	border-radius: 25px;
-	border: 2px solid #73AD21;
+	border: 2px solid #4CAF50;
 	background-color: #D4D8D1;
 	margin: 0 auto;
+	margin-top: 40px;
+	margin-bottom: 40px;
 	padding: 20px;
 }
 
-.container-login {
-	width: 35%;
+.container-form {
+	border-radius: 25px;
+	width: 50%;
 }
 
 .container-main {
 	width: 90%;
-	margin-top: 40px;
-	margin-bottom: 40px;
 }
 
 /* IMAGES */

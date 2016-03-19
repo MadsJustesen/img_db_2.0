@@ -18,12 +18,11 @@ class SessionController {
 		$password = $_POST["password"];
 
 		$this->user->logIn($username, $password);	
-
 		$this->redirect("log_in");
 	}
 
 	public function destroy() {
-		$_SESSION["logged_in"] = false;
+		$this->user->logOut();
 		$this->redirect("log_out");
 	}
 

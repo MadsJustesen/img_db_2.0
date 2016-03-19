@@ -19,10 +19,25 @@ class UserController {
 		$password_confirmation 	= $_POST["add_user_password_confirm"];
 
 		$this->user->save($username, $password, $password_confirmation);
+
+		$this->redirect();
 	}
 
-	public function addUser() {
-		require VIEW_DIR . '/pages/add_user.php';
+	public function users() {
+		$users = $this->user->all();
+		require VIEW_DIR . '/pages/users.php';
+	}
+
+	public function signUp() {
+		require VIEW_DIR . '/pages/sign_up.php';
+	}
+
+	public function redirect() {
+		if($_SESSION["logged_in"]) {
+			require VIEW_DIR . '/pages/home.php';
+		} else {
+			require VIEW_DIR . '/pages/sign_up.php';
+		}
 	}
 
 }

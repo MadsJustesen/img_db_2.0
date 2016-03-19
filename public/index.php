@@ -25,28 +25,29 @@ session_start();
 require __DIR__ . '/../App/Core/Autoloader.php';
 
 require CONFIG_DIR . '/db.php';
-$db = new PDO('mysql:host=127.0.0.1;dbname=' . $db_name, $db_user, $db_pass);
-$db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+$dbh = new PDO('mysql:host=127.0.0.1;dbname=' . $db_name, $db_user, $db_pass);
+$dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
 
 $loader = new Autoloader();
 $loader->addNamespace('App', __DIR__ . '/../App');
 $loader->register();
 
 $container = new Container();
-$container->bindArguments('App\\Model\\User', ['db' => $db]);
+$container->bindArguments('App\\Model\\User', ['dbh' => $dbh]);
 
 /**************
 *   ROUTING   *
 **************/
 
 $router = new Router();
-$router->addRoute('GET', '/',			['App\\Controller\\SessionController',	"redirect"]);
+$router->addRoute('GET', '/',			['App\\Controller\\SessionController',	"redirect"	]);
 $router->addRoute('GET', '/log_in',		['App\\Controller\\SessionController',	"newSession"]);
-$router->addRoute('GET', '/log_out',	['App\\Controller\\SessionController',	"destroy"]);
-$router->addRoute('GET', '/add_user',	['App\\Controller\\UserController', 	"addUser"]);
+$router->addRoute('GET', '/log_out',	['App\\Controller\\SessionController',	"destroy"	]);
+$router->addRoute('GET', '/sign_up',	['App\\Controller\\UserController', 	"signUp"	]);
+$router->addRoute('GET', '/users' ,		['App\\Controller\\UserController',		"users"		]);
 
-$router->addRoute('POST', '/log_in',	['App\\Controller\\SessionController', 	"create"]);
-$router->addRoute('POST', '/add_user',	['App\\Controller\\UserController', 	"create"]);
+$router->addRoute('POST', '/log_in',	['App\\Controller\\SessionController', 	"create"	]);
+$router->addRoute('POST', '/sign_up',	['App\\Controller\\UserController', 	"create"	]);
 
 // Convert i.e. "/foo%40bar?id=1" to "/foo@bar"
 $uri = rawurldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
