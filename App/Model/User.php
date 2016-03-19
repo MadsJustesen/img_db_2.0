@@ -23,7 +23,7 @@ class User {
 				$stmt->execute();
 
 				// Log in the user after signup
-				logIn($username, $password)
+				logIn($username, $password);
 			} else {
 				echo "Passwords didn't match! Please try again";
 			}

@@ -1,9 +1,17 @@
-<div class="page-header">
-	<ul>
-		<li class="active"><a href="/">Home</a></li>
-		<li><a href="users">Users</a></li>
-		<li><a href="gallery">Gallery</a></li>
-		<li><a href="upload_image">Upload</a></li>
-		<li><a href="log_out">Log out</a></li>
-	</ul>
-</div>
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Title</title>
+
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+</head>
+<body>
+	<div class="page-header">
+		<ul>
+			<li class="active"><a href="/">Home</a></li>
+			<li><a href="users">Users</a></li>
+			<li><a href="gallery">Gallery</a></li>
+			<li><a href="upload">Upload</a></li>
+			<li><a href="log_out">Log out</a></li>
+		</ul>
+	</div>
