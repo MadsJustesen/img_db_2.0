@@ -9,7 +9,7 @@
 
 	<h1>Log In</h1>
 	<div class="container">
-		<form onsubmit="" method="POST" action="log_in.php">
+		<form method="POST" action="">
 			<table class="table-form">
 				<tr>
 					<td><label>Brugernavn: </label></td>

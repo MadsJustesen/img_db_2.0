@@ -1,41 +1,38 @@
 <?php
 namespace App\Controller;
 
+use App\Model\User;
+
 class SessionController {
 
-	public function create() {
-		require CONFIG_DIR . '/db.php';
-		if($_SERVER["REQUEST_METHOD"] == "POST") {
-			try {
-				$username = $_POST["username"];
+	private $user = null;
 
-				$dbh = new PDO('mysql:host=127.0.0.1;dbname=' . $db_name, $db_user, $db_pass);
-				$dbh->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
-
-				$sth = $dbh->prepare('SELECT password_digest FROM USERS WHERE username = :username');
-				$sth->bindParam(':username', $username);
-				$sth->execute();
-
-				$result = $sth->fetch(PDO::FETCH_ASSOC);
-
-				if (password_verify($_POST["password"], $result["password_digest"])) {
-					$_SESSION["logged_in"] = true;
-					header('Location: index.php');
-					exit;
-				} else {
-					echo 'Prøv igen';
-				}
-			} catch (PDOException $e) {
-				print "Error!: " . $e->getMessage() . "<br/>";
-				die();
-			}
-		}
-
-		$this->showLoginForm();
+	public function __construct(User $user)
+	{
+		$this->user = $user;
 	}
 
-	public function logIn() {
+	public function create() {
+		//No reason to check for request-type; this function will only be called with 'POST'
+		$username = $_POST["username"];
+		$password = $_POST["password"];
+
+		$this->user->logIn($username, $password);	
+
+		$this->redirect();
+	}
+
+	public function newSession() {
 		require VIEW_DIR . '/pages/log_in.php';
+	}
+
+	private function redirect() {
+		if($_SESSION["logged_in"]) {
+			require VIEW_DIR . '/pages/home.php';
+		} else {
+			echo 'Username or password was incorrect. Please try again.';
+			$this->newSession();
+		}
 	}
 
 }

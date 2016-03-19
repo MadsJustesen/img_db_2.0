@@ -24,18 +24,23 @@ session_start();
 
 require __DIR__ . '/../App/Core/Autoloader.php';
 
+require CONFIG_DIR . '/db.php';
+$db = new PDO('mysql:host=127.0.0.1;dbname=' . $db_name, $db_user, $db_pass);
+$db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION );
+
 $loader = new Autoloader();
 $loader->addNamespace('App', __DIR__ . '/../App');
 $loader->register();
 
 $container = new Container();
+$container->bindArguments('App\\Model\\User', ['db' => $db]);
 
 /**************
 *   ROUTING   *
 **************/
 
 $router = new Router();
-$router->addRoute('GET', '/', ['App\\Controller\\SessionController', "logIn"]);
+$router->addRoute('GET', '/', ['App\\Controller\\SessionController', "newSession"]);
 $router->addRoute('GET', '/add_user', ['App\\Controller\\UserController', "addUser"]);
 
 $router->addRoute('POST', '/', ['App\\Controller\\SessionController', "create"]);
