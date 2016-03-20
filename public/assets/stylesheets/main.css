@@ -48,7 +48,7 @@ h1 {
 
 /* FORMS */
 form {
-	width: 80%;
+	width: 100%;
 	margin: 0 auto;
 }
 
@@ -62,6 +62,14 @@ form {
 
 .form-input {
 	text-align: center;
+}
+
+.error {
+	color: red;
+}
+
+.error-container {
+	display: none;
 }
 
 /* TABLES */

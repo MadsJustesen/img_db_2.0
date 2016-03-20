@@ -12,6 +12,7 @@ error_reporting(-1);
 // dev only
 ini_set('display_errors', 1);
 
+define('SCRIPT_DEBUG', true);
 define('VIEW_DIR', realpath(__DIR__ . '/../views'));
 define('CONFIG_DIR', realpath(__DIR__ . '/../config/'));
 
@@ -58,10 +59,10 @@ $uri = rawurldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 $route = $router->match($_SERVER['REQUEST_METHOD'], $uri);
 
 if ($route === null) {
-    $route = [
-        'handle' => ['App\\Controller\\ErrorController', 'error404'],
-        'arguments' => []
-    ];
+	$route = [
+	'handle' => ['App\\Controller\\ErrorController', 'error404'],
+	'arguments' => []
+	];
 }
 
 $controller = $container->create($route['handle'][0]);

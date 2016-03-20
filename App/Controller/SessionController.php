@@ -13,7 +13,6 @@ class SessionController {
 	}
 
 	public function create() {
-		//No reason to check for request-type; this function will only be called with 'POST'
 		$username = $_POST["username"];
 		$password = $_POST["password"];
 

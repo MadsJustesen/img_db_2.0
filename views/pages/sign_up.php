@@ -5,9 +5,21 @@ require '../views/header.php';
 <div class="container container-form">
 	<div class="row">
 		<h1>New user</h1>
+
+		<div id="error-div" class="row error-container">
+			<div class="col-2"></div>
+			<div class="col-8">
+				<!-- Error messages -->
+				<p class="error" id="username-missing-error"></p>
+				<p class="error" id="password-length-error"></p>
+				<p class="error" id="password-match-error"></p>
+				<!-- -->
+			</div>
+		</div>
+		
 		<div class="col-2"></div>
 		<div class="col-8">
-			<form method="POST" action="sign_up">
+			<form name="signupform" method="POST" action="sign_up" onsubmit="return validateSignUp()">
 				<table class="table-form">
 					<tr>
 						<td class="form-label"><label>Username: </label></td>
@@ -22,7 +34,7 @@ require '../views/header.php';
 						<td class="form-input"><input type="password" name="add_user_password_confirm"></td>
 					</tr>	
 					<tr>
-						<td class="form-label"><input type="Submit" value="Sign up!"></td>
+						<td class="form-label"><button type="Submit">Sign up!</button></td>
 						<td></td>
 					</tr>
 				</table>

@@ -13,7 +13,6 @@ class UserController {
 	}
 
 	public function create() {
-		//No reason to check for request-type; this function will only be called with 'POST'
 		$username 				= $_POST["add_user_username"];
 		$password 				= $_POST["add_user_password"];
 		$password_confirmation 	= $_POST["add_user_password_confirm"];
