@@ -3,6 +3,7 @@ require '../views/header.php';
 ?>
 
 <div class="container container-main">
+	<h1>My images</h1>
 	<table>
 		<?php 
 		$i = 1;

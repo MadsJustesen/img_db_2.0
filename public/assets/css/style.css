@@ -143,7 +143,6 @@ img {
 [class*="col-"] {
 	float: left;
 	padding: 15px;
-	border: 1px solid red;
 }
 
 .row:after {
