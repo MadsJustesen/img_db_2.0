@@ -2,6 +2,7 @@
 namespace App\Model;
 
 use PDO;
+use DateTime;
 
 class User {
 
@@ -35,7 +36,7 @@ class User {
 
 	public function logIn($username, $password) {
 		try {
-			$sth = $this->dbh->prepare('SELECT password_digest FROM USERS WHERE username = :username');
+			$sth = $this->dbh->prepare('SELECT id, password_digest FROM USERS WHERE username = :username');
 			$sth->bindParam(':username', $username);
 			$sth->execute();
 
@@ -43,6 +44,8 @@ class User {
 
 			if (password_verify($password, $result["password_digest"])) {
 				$_SESSION["logged_in"] = true;
+				$_SESSION["current_user"] = $result["id"];
+				$this->loginStamp();
 			} else {
 				$_SESSION["logged_in"] = false;
 			}
@@ -54,6 +57,7 @@ class User {
 
 	public function logOut() {
 		$_SESSION["logged_in"] = false;
+		$_SESSION["current_user"] = null;
 	}
 
 	public function all() {
@@ -62,6 +66,13 @@ class User {
 
 		$result = $sth->fetchAll();
 		return $result;
+	}
+
+	private function loginStamp() {
+		$date = new DateTime();
+		$sql = "UPDATE USERS SET last_login = '" . $date->format('Y-m-d H:i:s') . "' WHERE id = " . $_SESSION["current_user"];
+		$stmt = $this->dbh->prepare($sql);
+		$stmt->execute();
 	}
 
 }

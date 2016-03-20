@@ -31,7 +31,7 @@ class SessionController {
 	}
 
 	public function redirect($from = null) {
-		if($_SESSION["logged_in"]) {
+		if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
 			require VIEW_DIR . '/pages/home.php';
 		} else {
 			switch($from) {

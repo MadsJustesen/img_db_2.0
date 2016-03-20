@@ -17,7 +17,7 @@ class ImageController {
 	}
 
 	public function show() {
-		var_dump($this->image->get());
+		$images = $this->image->all();
 		require VIEW_DIR . '/pages/gallery.php';
 	}
 
