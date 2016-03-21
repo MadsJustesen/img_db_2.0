@@ -10,12 +10,12 @@ require '../views/header.php';
 		<div class="col-1"></div>
 		<div class="col-10">
 			<form method="POST" action="log_in">
-				<input type="text" name="username">
+				<input type="text" name="username" autofocus>
 				<br>
-				<label>Username </label>
+				<label>Username</label>
 				<input type="password" name="password">
 				<br>
-				<label>Password: </label>
+				<label>Password</label>
 				<button type="Submit">Log in</button>
 			</form>
 		</div>

@@ -23,15 +23,13 @@ h1 {
 
 /* PAGE HEADER */
 .page-header {
-	padding: 20px;
-	background-color: #4CAF50;
-}
-
-.page-header h1 {
 	color: white;
+	font-size: 32px;
+	font-weight: bold;
 	text-align: left;
 	margin: 0px;
-	padding: 0px;
+	padding: 20px;
+	background-color: #4CAF50;
 }
 
 .nav-header {
@@ -47,6 +45,7 @@ h1 {
 }
 
 .nav-header li {
+	min-width: 100px;
 	float: left;
 }
 
@@ -76,8 +75,16 @@ input {
 	width: 100%;
 	padding: 10px;
 	border: none;
-    border-bottom: 2px solid #4CAF50;
-    font-size:24px;
+	border-bottom: 2px solid #333;
+	font-size:24px;
+}
+
+input[type=text]:focus {
+	border-bottom: 2px solid #4CAF50;
+}
+
+input[type=password]:focus {
+	border-bottom: 2px solid #4CAF50;
 }
 
 input[type=file] {
@@ -89,14 +96,21 @@ input[type=file] {
 }
 
 button {
-    background-color: #4CAF50;
-    border: none;
-    color: white;
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0px;
-    cursor: pointer;
-    font-size:24px;
+	background-color: #4CAF50;
+	border: none;
+	color: white;
+	width: 100%;
+	padding: 10px;
+	margin: 10px 0px;
+	cursor: pointer;
+	font-size:24px;
+}
+
+.table-button {
+	font-size: 16px;
+	width: 40%;
+	padding: 5px;
+	margin: 0px;
 }
 
 .table-form {
@@ -130,7 +144,7 @@ table {
 
 th {
 	height: 30px;
-	background-color: #4CAF50;
+	background-color: #333;
 	color: white;
 }
 
@@ -139,12 +153,30 @@ th, td {
 	text-align: left;
 }
 
+.admin-column {
+	text-align: center;
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+.active-user {
+	border: 2px solid #4CAF50;
+}
+
+.image-table {
+	text-align: center;
+}
+
 .table-list tr:nth-child(even) {
-	background-color: #f2f2f2
+	background-color: #f2f2f2;
 }
 
 .table-list {
-	border: 2px solid #4CAF50;
+	border: 2px solid #333;
+}
+
+.table-list td {
+	border-left: 1px solid #333;
 }
 
 /* CONTAINER */

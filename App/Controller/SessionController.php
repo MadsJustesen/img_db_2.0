@@ -26,11 +26,13 @@ class SessionController {
 	}
 
 	public function newSession() {
+		$title = "Log in";
 		require VIEW_DIR . '/pages/log_in.php';
 	}
 
 	public function redirect($from = null) {
 		if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
+			$title = "Home";
 			require VIEW_DIR . '/pages/home.php';
 		} else {
 			switch($from) {

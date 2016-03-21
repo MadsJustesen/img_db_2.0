@@ -24,17 +24,22 @@ class UserController {
 
 	public function users() {
 		$users = $this->user->all();
+		$title = "Users";
+		$admin = $this->user->isAdmin($_SESSION["current_user"]);
 		require VIEW_DIR . '/pages/users.php';
 	}
 
 	public function signUp() {
+		$title = "Sign Up";
 		require VIEW_DIR . '/pages/sign_up.php';
 	}
 
 	public function redirect() {
 		if($_SESSION["logged_in"]) {
+			$title = "Home";
 			require VIEW_DIR . '/pages/home.php';
 		} else {
+			$title = "Sign Up";
 			require VIEW_DIR . '/pages/sign_up.php';
 		}
 	}

@@ -22,15 +22,15 @@ require '../views/header.php';
 		<div class="col-1"></div>
 		<div class="col-10">
 			<form name="signupform" method="POST" action="sign_up" onsubmit="return validateSignUp()">
-				<input type="text" name="add_user_username">
+				<input id="username" type="text" name="add_user_username" autofocus>
 				<br>
 				<label>Username</label>
 				<br>
-				<input type="password" name="add_user_password">
+				<input id="password" type="password" name="add_user_password">
 				<br>
 				<label>Password</label>
 				<br>
-				<input type="password" name="add_user_password_confirm">
+				<input id="password-confirmation" type="password" name="add_user_password_confirm">
 				<br>
 				<label>Repeat password</label>
 				<br>
@@ -38,6 +38,7 @@ require '../views/header.php';
 			</form>
 		</div>
 	</div>
+	<div class="center">Already a user? <a href="log_in">Log in here!</a></div>
 </div>
 <?php 
 require '../views/footer.php';

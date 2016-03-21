@@ -13,16 +13,19 @@ class ImageController {
 	}
 
 	public function upload() {
+		$title = "Upload";
 		require VIEW_DIR . '/pages/upload.php';
 	}
 
 	public function show() {
 		$images = $this->image->all();
+		$title = "Gallery";
 		require VIEW_DIR . '/pages/gallery.php';
 	}
 
 	public function save() {
 		$this->image->save();
+		$title = "Upload";
 		require VIEW_DIR . '/pages/upload.php';
 	}
 

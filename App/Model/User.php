@@ -55,6 +55,21 @@ class User {
 		}
 	}
 
+	public function isAdmin($userId) {
+		try {
+			$sth = $this->dbh->prepare('SELECT role FROM USERS WHERE id = :id');
+			$sth->bindParam(':id', $userId);
+			$sth->execute();
+
+			$result = $sth->fetch(PDO::FETCH_ASSOC);
+			$role = $result["role"];
+		} catch (PDOException $e) {
+			print "Error!: " . $e->getMessage() . "<br/>";
+			die();
+		}
+		return ($role === "admin");
+	}
+
 	public function logOut() {
 		$_SESSION["logged_in"] = false;
 		$_SESSION["current_user"] = null;

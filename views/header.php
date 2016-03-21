@@ -1,24 +1,24 @@
 <!DOCTYPE html>
 <head>
 	<meta charset="utf-8"/>
-	<title>Title</title>
+	<title><?php if (isset($title)) { echo $title; } ?></title>
 
 	<link rel="stylesheet" type="text/css" href="assets/stylesheets/main.css">
 	<script src="assets/javascripts/application.js"></script>
 </head>
 <body>
-	<div class="page-header">
-		<h1>Image Database</h1>
-	</div>
+	<button class="page-header" onclick="location.href='/'">
+		Image Database
+	</button>
 	<?php 
 	if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
 		?>
 		<div class="nav-header">
 			<ul>
-				<li class="active"><a href="/">Home</a></li>
-				<li><a href="users">Users</a></li>
-				<li><a href="gallery">Gallery</a></li>
-				<li><a href="upload">Upload</a></li>
+				<li <?php if (isset($title) && $title === "Home") { echo 'class="active"'; } ?> ><a href="/">Home</a></li>
+				<li <?php if (isset($title) && $title === "Users") { echo 'class="active"'; } ?>><a href="users">Users</a></li>
+				<li <?php if (isset($title) && $title === "Gallery") { echo 'class="active"'; } ?>><a href="gallery">Gallery</a></li>
+				<li <?php if (isset($title) && $title === "Upload") { echo 'class="active"'; } ?>><a href="upload">Upload</a></li>
 				<li><a href="log_out">Log out</a></li>
 			</ul>
 		</div>

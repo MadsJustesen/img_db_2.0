@@ -9,9 +9,9 @@ require '../views/header.php';
 	<table>
 		<?php 
 		$i = 1;
-		echo "<tr>";
+		echo '<tr>';
 		foreach ($images as $image) {
-			echo '<td><img src="data:image/jpeg;base64,' . base64_encode( $image["image"] ) . '"/></td>';
+			echo '<td class="image-table"><img src="data:image/jpeg;base64,' . base64_encode( $image["image"] ) . '"/></td>';
 
 			if($i % 4 === 0){
 				echo "</tr><tr>";
