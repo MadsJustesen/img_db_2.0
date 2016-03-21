@@ -3,25 +3,20 @@ require '../views/header.php';
 ?>
 
 <div class="container container-form">
+	<div class="container-header">
+		<h1>Log in</h1>
+	</div>
 	<div class="row">
-		<h1>Log In</h1>
-		<div class="col-2"></div>
-		<div class="col-8">
+		<div class="col-1"></div>
+		<div class="col-10">
 			<form method="POST" action="log_in">
-				<table class="table-form">
-					<tr>
-						<td class="form-label"><label>Brugernavn: </label></td>
-						<td class="form-input"><input type="text" name="username"></td>
-					</tr>
-					<tr>
-						<td class="form-label"><label>Password: </label></td>
-						<td class="form-input"><input type="password" name="password"></td>
-					</tr>	
-					<tr>
-						<td class="form-label"><input type="Submit" value="Log ind"></td>
-						<td></td>
-					</tr>
-				</table>
+				<input type="text" name="username">
+				<br>
+				<label>Username </label>
+				<input type="password" name="password">
+				<br>
+				<label>Password: </label>
+				<button type="Submit">Log in</button>
 			</form>
 		</div>
 	</div>

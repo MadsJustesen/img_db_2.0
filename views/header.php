@@ -7,10 +7,13 @@
 	<script src="assets/javascripts/application.js"></script>
 </head>
 <body>
+	<div class="page-header">
+		<h1>Image Database</h1>
+	</div>
 	<?php 
 	if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
 		?>
-		<div class="page-header">
+		<div class="nav-header">
 			<ul>
 				<li class="active"><a href="/">Home</a></li>
 				<li><a href="users">Users</a></li>

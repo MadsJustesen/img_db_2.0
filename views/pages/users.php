@@ -3,7 +3,9 @@ require '../views/header.php';
 ?>
 
 <div class="container container-main row">
-	<h1>Users</h1>
+	<div class="container-header">
+		<h1>Users</h1>
+	</div>
 	<div class="col-2"></div>
 	<div class="col-8">
 		<table class="table-list">
