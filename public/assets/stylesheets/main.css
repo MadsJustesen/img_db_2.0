@@ -168,7 +168,7 @@ th, td {
 	background-color: #4CAF50;
 }
 
-.container-header h1 {
+.container-header h1, h2, h3 {
 	color: white;
 	margin-top: 0px;
 	text-align: left;

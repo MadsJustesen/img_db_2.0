@@ -4,7 +4,7 @@ require '../views/header.php';
 
 <div class="container container-main">
 	<div class="container-header">
-		<h1>My images</h1>
+		<h2>My images</h2>
 	</div>
 	<table>
 		<?php 

@@ -4,7 +4,7 @@ require '../views/header.php';
 
 <div class="container container-main row">
 	<div class="container-header">
-		<h1>Users</h1>
+		<h2>Users</h2>
 	</div>
 	<div class="col-2"></div>
 	<div class="col-8">

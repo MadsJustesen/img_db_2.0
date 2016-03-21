@@ -4,7 +4,7 @@ require '../views/header.php';
 
 <div class="container container-form">
 	<div class="container-header">
-		<h1>New user</h1>
+		<h2>New user</h2>
 	</div>
 	<div class="row">
 

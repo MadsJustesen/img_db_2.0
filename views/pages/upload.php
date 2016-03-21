@@ -4,7 +4,7 @@ require '../views/header.php';
 
 <div class="container container-form">
 	<div class="container-header">
-		<h1>Upload image</h1>
+		<h2>Upload image</h2>
 	</div>
 	<div class="row">
 		<div class="col-1"></div>
