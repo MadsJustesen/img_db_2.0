@@ -1,3 +1,5 @@
+/* UNIVERSAL */
+
 html, body {
 	margin:0;
 	padding:0;
@@ -22,6 +24,7 @@ h1 {
 }
 
 /* PAGE HEADER */
+
 .page-header {
 	color: white;
 	font-size: 32px;
@@ -32,11 +35,27 @@ h1 {
 	background-color: #4CAF50;
 }
 
-.nav-header {
-	border: 2px solid #333;
+/* NAV-BAR */
+
+#sticky {
+
+}
+
+#sticky.stick {
+	margin-top: 0;
+	border-top: 5px solid #4CAF50;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 10000;
+}
+
+#sticky.stick li a {
+	padding: 2px;
 }
 
 .nav-header ul {
+	border: 2px solid #333;
 	list-style-type: none;
 	margin: 0;
 	padding: 0;

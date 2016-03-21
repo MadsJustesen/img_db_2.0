@@ -4,6 +4,7 @@
 	<title><?php if (isset($title)) { echo $title; } ?></title>
 
 	<link rel="stylesheet" type="text/css" href="assets/stylesheets/main.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 	<script src="assets/javascripts/application.js"></script>
 </head>
 <body>
@@ -13,7 +14,8 @@
 	<?php 
 	if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
 		?>
-		<div class="nav-header">
+		<div id="sticky-anchor"></div>
+		<div id="sticky" class="nav-header">
 			<ul>
 				<li <?php if (isset($title) && $title === "Home") { echo 'class="active"'; } ?> ><a href="/">Home</a></li>
 				<li <?php if (isset($title) && $title === "Users") { echo 'class="active"'; } ?>><a href="users">Users</a></li>

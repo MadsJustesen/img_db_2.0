@@ -1,3 +1,4 @@
+// validate sign-up form
 function validateSignUp() {
     var valid = true;
     var username = document.forms["signupform"]["add_user_username"].value;
@@ -30,3 +31,22 @@ function validateSignUp() {
         return false;
     }
 }
+
+// Snap nav-bar to top, when scrolled to
+function sticky_relocate() {
+    var window_top = $(window).scrollTop();
+    var div_top = $('#sticky-anchor').offset().top;
+    if (window_top > div_top) {
+        $('#sticky').addClass('stick');
+        $('#sticky-anchor').height($('#sticky').outerHeight());
+    } else {
+        $('#sticky').removeClass('stick');
+        $('#sticky-anchor').height(0);
+    }
+}
+
+// register when window is scrolled
+$(function() {
+    $(window).scroll(sticky_relocate);
+    sticky_relocate();
+});
