@@ -26,7 +26,7 @@ h1 {
 /* PAGE HEADER */
 
 .page-header {
-	color: white;
+	color: #333;
 	font-size: 32px;
 	font-weight: bold;
 	text-align: left;
@@ -61,6 +61,7 @@ h1 {
 	padding: 0;
 	overflow: hidden;
 	background: #333;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
 }
 
 .nav-header li {
@@ -117,7 +118,7 @@ input[type=file] {
 button {
 	background-color: #4CAF50;
 	border: none;
-	color: white;
+	color: #333;
 	width: 100%;
 	padding: 10px;
 	margin: 10px 0px;
@@ -128,7 +129,7 @@ button {
 .button {
 	background-color: #4CAF50;
 	border: none;
-	color: white;
+	color: #333;
 	width: 100%;
 	padding: 10px;
 	margin: 10px 0px;
@@ -187,6 +188,7 @@ th, td {
 	font-size: 18px;
 	width: 45%;
 	padding: 5px;
+	margin: 0px;
 
 	display: inline-block;
 	-webkit-appearance: button;
@@ -198,7 +200,7 @@ th, td {
 }
 
 .admin-column a:visited {
-	color: white;
+	color: #333;
 }
 
 .active-user {
@@ -224,6 +226,7 @@ th, td {
 	margin: 0 auto;
 	margin-top: 40px;
 	margin-bottom: 40px;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
 }
 
 .container-form {
@@ -239,7 +242,7 @@ th, td {
 }
 
 .container-header h1, h2, h3 {
-	color: white;
+	color: #333;
 	margin-top: 0px;
 	text-align: left;
 	padding: 10px;
@@ -316,7 +319,7 @@ img:hover {
 	background: #fff;
 }
 .close {
-	color: #FFFFFF;
+	color: #333;
 	line-height: 25px;
 	position: absolute;
 	top: 5px;
@@ -327,7 +330,7 @@ img:hover {
 	font-weight: bold;
 }
 .close:hover {
-	color: #333;
+	color: white;
 }
 
 /* GRID */
