@@ -2,6 +2,20 @@
 require '../views/header.php';
 ?>
 
+<div id="openModal" class="modalDialog">
+	<div class="row">	
+		<a href="#close" title="Close" class="close">X</a>
+		<div class="container-header">
+			<h2>Edit user</h2>
+		</div>	
+		<div class="col-1"></div>
+		<div class="col-10">
+			<p>This is a sample modal box that can be created using the powers of CSS3.</p>
+			<p>You could do a lot of things here like have a pop-up ad that shows when your website loads, or create a login/register form for users.</p>
+		</div>
+	</div>
+</div>
+
 <div class="container container-main row">
 	<div class="container-header">
 		<h2>Users</h2>
@@ -35,8 +49,9 @@ require '../views/header.php';
 					echo '<td>' . $user["role"] . '</td>';
 					echo '<td>' . $user["last_login"] . '</td>';
 					if($admin) {
-						echo '<td class="admin-column"><button class="table-button">Edit</button>
-						<button class="table-button">Delete</button>
+						echo '<td class="admin-column">
+						<a href="#openModal" class="button">Edit</a>
+						<a href="#openModal" class="button">Delete</a>
 						</td>';
 					}
 					echo '</tr>';
