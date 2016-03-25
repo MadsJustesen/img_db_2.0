@@ -6,7 +6,7 @@ require '../views/header.php';
 	<div class="row">	
 		<a href="#close" title="Close" class="close">X</a>
 		<div class="container-header">
-			<h2>Edit user</h2>
+			<h2>Edit user <?php echo $_GET["id"] ?></h2>
 		</div>	
 		<div class="col-1"></div>
 		<div class="col-10">
@@ -50,7 +50,7 @@ require '../views/header.php';
 					echo '<td>' . $user["last_login"] . '</td>';
 					if($admin) {
 						echo '<td class="admin-column">
-						<a href="#openModal" class="button">Edit</a>
+						<a href="/users?id='. $user["id"] .'#openModal" class="button">Edit</a>
 						<a href="#openModal" class="button">Delete</a>
 						</td>';
 					}

@@ -34,6 +34,23 @@ class User {
 		}
 	}
 
+	public function update($username = null, $password = null) {
+		try {
+			if(isset($username)) {
+				$updateUsername = "UPDATE USERS SET username = '" . $username . "' WHERE id = " . $_SESSION["current_user"];
+				$stmt = $this->dbh->prepare($updateUsername);
+			}
+			if(isset($password)) {
+				$updatePassword = "UPDATE USERS SET password_digest = '" . $password . "' WHERE id = " . $_SESSION["current_user"];
+				$stmt = $this->dbh->prepare($updatePassword);
+			}
+			$stmt->execute();
+		} catch (PDOException $e) {
+			print "Error!: " . $e->getMessage() . "<br/>";
+			die();
+		}
+	}
+
 	public function logIn($username, $password) {
 		try {
 			$sth = $this->dbh->prepare('SELECT id, password_digest FROM USERS WHERE username = :username');

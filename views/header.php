@@ -21,9 +21,21 @@
 				<li <?php if (isset($title) && $title === "Users") { echo 'class="active"'; } ?>><a href="users">Users</a></li>
 				<li <?php if (isset($title) && $title === "Gallery") { echo 'class="active"'; } ?>><a href="gallery">Gallery</a></li>
 				<li <?php if (isset($title) && $title === "Upload") { echo 'class="active"'; } ?>><a href="upload">Upload</a></li>
-				<li><a href="log_out">Log out</a></li>
-			</ul>
-		</div>
-		<?php 
-	}
-	?>
+				<li <?php 
+				if (isset($title) && $title === "Account") { 
+					echo 'class="active dropdown"'; 
+				} else {
+					echo 'class="dropdown"';
+				}
+				?>>
+				<a href="account">Account</a>
+				<div class="dropdown-content">
+					<a href="edit_user">Settings</a>
+					<a href="log_out">Log out</a>
+				</div>
+			</li>
+		</ul>
+	</div>
+	<?php 
+}
+?>
