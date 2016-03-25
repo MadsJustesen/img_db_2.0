@@ -12,8 +12,12 @@ class User {
 		$this->dbh = $dbh;
 	}
 
-	public function save($username, $password, $password_confirmation) {
+	public function save() {
 		try {
+			$username 				= $_POST["add_user_username"];
+			$password 				= $_POST["add_user_password"];
+			$password_confirmation 	= $_POST["add_user_password_confirm"];
+
 			$stmt = $this->dbh->prepare("INSERT INTO USERS (username, password_digest) VALUES (:username, :password_digest)");
 			$stmt->bindParam(':username', $username);
 			$stmt->bindParam(':password_digest', $password_digest);
@@ -34,14 +38,18 @@ class User {
 		}
 	}
 
-	public function update($username = null, $password = null) {
+	public function update() {
 		try {
-			if(isset($username)) {
+			if(isset($_POST["username"])) {
+				$username = $_POST["username"];
+				
 				$updateUsername = "UPDATE USERS SET username = '" . $username . "' WHERE id = " . $_SESSION["current_user"];
 				$stmt = $this->dbh->prepare($updateUsername);
 			}
-			if(isset($password)) {
-				$updatePassword = "UPDATE USERS SET password_digest = '" . $password . "' WHERE id = " . $_SESSION["current_user"];
+			if(isset($_POST["password"]) && ($_POST["password"] === $_POST["password_confirm"])) {
+				$password_digest = password_hash($_POST["password"], PASSWORD_DEFAULT);
+
+				$updatePassword = "UPDATE USERS SET password_digest = '" . $password_digest . "' WHERE id = " . $_SESSION["current_user"];
 				$stmt = $this->dbh->prepare($updatePassword);
 			}
 			$stmt->execute();

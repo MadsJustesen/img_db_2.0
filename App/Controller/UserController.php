@@ -13,18 +13,12 @@ class UserController {
 	}
 
 	public function create() {
-		$username 				= $_POST["add_user_username"];
-		$password 				= $_POST["add_user_password"];
-		$password_confirmation 	= $_POST["add_user_password_confirm"];
-
-		$this->user->save($username, $password, $password_confirmation);
-
+		$this->user->save();
 		$this->redirect();
 	}
 
 	public function update() {
-		$username = $_POST["username"];
-		$this->user->update($username);
+		$this->user->update();
 
 		$title = "Account";
 		require VIEW_DIR . '/pages/edit_user.php';

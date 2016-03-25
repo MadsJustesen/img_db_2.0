@@ -130,6 +130,10 @@ input[type=file] {
 	padding: 0px;
 }
 
+input[type=radio] {
+	width: auto;
+}
+
 button {
 	background-color: #4CAF50;
 	border: none;
