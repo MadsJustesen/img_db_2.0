@@ -13,10 +13,7 @@ class SessionController {
 	}
 
 	public function create() {
-		$username = $_POST["username"];
-		$password = $_POST["password"];
-
-		$this->user->logIn($username, $password);	
+		$this->user->logIn();	
 		$this->redirect("log_in");
 	}
 

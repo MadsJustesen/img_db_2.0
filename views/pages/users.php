@@ -32,7 +32,7 @@ require '../views/partials/_delete_user.php';
 					} else {
 						echo '<tr>';
 					}
-					echo '<td>' . $user["id"] . '</td>';
+					echo '<td class="id">' . $user["id"] . '</td>';
 					echo '<td>' . $user["username"] . '</td>';
 					echo '<td>' . $user["role"] . '</td>';
 					echo '<td>' . $user["last_login"] . '</td>';

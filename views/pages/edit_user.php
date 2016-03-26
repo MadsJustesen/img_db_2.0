@@ -21,16 +21,22 @@ require '../views/header.php';
 		
 		<div class="col-1"></div>
 		<div class="col-10">
-			<form name="signupform" method="POST" action="edit_user">
-				<input id="username" type="text" name="username" autofocus>
+			<form name="editform" method="POST" action="edit_user" onsubmit="return validateEdit()">
+				<h3 class="header-tight">Change username</h3>
+				<input type="text" name="new_username" autofocus>
 				<br>
 				<label>New username</label>
+				<br><br><br><br>
+				<h3 class="header-tight">Change password</h3>
+				<input type="password" name="old_password">
 				<br>
-				<input id="password" type="password" name="password">
+				<label>Old password</label>
+				<br>
+				<input type="password" name="new_password">
 				<br>
 				<label>New password</label>
 				<br>
-				<input id="password-confirmation" type="password" name="password_confirm">
+				<input type="password" name="new_password_confirm">
 				<br>
 				<label>Repeat new password</label>
 				<br>

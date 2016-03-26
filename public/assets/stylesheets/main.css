@@ -18,6 +18,11 @@ h1 {
 	text-align: center;
 }
 
+.header-tight {
+	margin: 0px;
+	padding: 0px;
+}
+
 .center {
 	display: table;
 	margin: 0 auto;
@@ -180,9 +185,25 @@ button {
 /* TABLES */
 table {
 	width: 100%;
-	table-layout: fixed;
 	margin: 0 auto;
 	border-collapse: collapse;
+}
+
+.table-list tr:nth-child(even) {
+	background-color: #f2f2f2;
+}
+
+.table-list {
+	border: 2px solid #333;
+}
+
+.table-list td {
+	border-left: 1px solid #333;
+}
+
+table .id {
+	width: auto;
+	white-space: nowrap;
 }
 
 th {
@@ -224,18 +245,6 @@ th, td {
 
 .active-user {
 	border: 2px solid #4CAF50;
-}
-
-.table-list tr:nth-child(even) {
-	background-color: #f2f2f2;
-}
-
-.table-list {
-	border: 2px solid #333;
-}
-
-.table-list td {
-	border-left: 1px solid #333;
 }
 
 /* CONTAINER */
@@ -295,6 +304,10 @@ img:hover {
 	margin: 0px;
 	text-align: center;
 	padding: 0px;
+}
+
+.image-table {
+	table-layout: fixed;
 }
 
 .image-table tr {

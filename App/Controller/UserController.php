@@ -37,7 +37,7 @@ class UserController {
 	public function users() {
 		$users = $this->user->all();
 		$title = "Users";
-		$admin = $this->user->isAdmin($_SESSION["current_user"]);
+		$admin = $this->user->isAdmin();
 		require VIEW_DIR . '/pages/users.php';
 	}
 

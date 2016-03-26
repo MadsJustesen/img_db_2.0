@@ -32,6 +32,40 @@ function validateSignUp() {
     }
 }
 
+// validate edit form
+function validateEdit() {
+    var valid = true;
+    var password = document.forms["editform"]["new_password"].value;
+    var passwordConfirmation = document.forms["editform"]["new_password_confirm"].value;
+    var passwordLength = password.length;
+
+    //Make sure fixed errors cleared
+    document.getElementById("username-missing-error").innerHTML = "";
+    document.getElementById("password-match-error").innerHTML = "";
+    document.getElementById("password-length-error").innerHTML = "";
+
+    if(passwordLength > 0 && passwordLength < 6) {
+        document.getElementById("password-length-error").innerHTML = "*Password must be at least 6 characters";
+        valid = false;
+    }
+
+    if(!(password == passwordConfirmation)) {
+        document.getElementById("password-match-error").innerHTML = "*Passwords didn't match";
+        valid = false;
+    }
+
+    if(!valid) {
+        document.getElementById("error-div").style.display = 'block';
+        return false;
+    }
+}
+
+// register when window is scrolled
+$(function() {
+    $(window).scroll(sticky_relocate);
+    sticky_relocate();
+});
+
 // Snap nav-bar to top, when scrolled to
 function sticky_relocate() {
     var window_top = $(window).scrollTop();
@@ -44,9 +78,3 @@ function sticky_relocate() {
         $('#sticky-anchor').height(0);
     }
 }
-
-// register when window is scrolled
-$(function() {
-    $(window).scroll(sticky_relocate);
-    sticky_relocate();
-});

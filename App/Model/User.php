@@ -16,7 +16,6 @@ class User {
 		try {
 			$username 				= $_POST["add_user_username"];
 			$password 				= $_POST["add_user_password"];
-			$password_confirmation 	= $_POST["add_user_password_confirm"];
 
 			$stmt = $this->dbh->prepare("INSERT INTO USERS (username, password_digest) VALUES (:username, :password_digest)");
 			$stmt->bindParam(':username', $username);
@@ -24,14 +23,10 @@ class User {
 
 			$password_digest = password_hash($password, PASSWORD_DEFAULT);
 
-			if($password == $password_confirmation) {
-				$stmt->execute();
+			$stmt->execute();
 
-				// Log in the user after signup
-				$this->logIn($username, $password);
-			} else {
-				echo "Passwords didn't match! Please try again";
-			}
+			// Log in user after sign up
+			$this->logIn($username, $password);
 		} catch (PDOException $e) {
 			print "Error!: " . $e->getMessage() . "<br/>";
 			die();
@@ -40,36 +35,35 @@ class User {
 
 	public function update() {
 		try {
-			if(isset($_POST["username"])) {
+			if(isset($_POST["username"]) && $_POST["username"].trim() != "") {
 				$username = $_POST["username"];
 				
 				$updateUsername = "UPDATE USERS SET username = '" . $username . "' WHERE id = " . $_SESSION["current_user"];
 				$stmt = $this->dbh->prepare($updateUsername);
+				$stmt->execute();
 			}
-			if(isset($_POST["password"]) && ($_POST["password"] === $_POST["password_confirm"])) {
-				$password_digest = password_hash($_POST["password"], PASSWORD_DEFAULT);
+
+			if(isset($_POST["new_password"]) && $this->isAuthorized($this->currentUser()["username"], $_POST["old_password"])) {
+				$password_digest = password_hash($_POST["new_password"], PASSWORD_DEFAULT);
 
 				$updatePassword = "UPDATE USERS SET password_digest = '" . $password_digest . "' WHERE id = " . $_SESSION["current_user"];
 				$stmt = $this->dbh->prepare($updatePassword);
+				$stmt->execute();
 			}
-			$stmt->execute();
 		} catch (PDOException $e) {
 			print "Error!: " . $e->getMessage() . "<br/>";
 			die();
 		}
 	}
 
-	public function logIn($username, $password) {
+	public function logIn() {
 		try {
-			$sth = $this->dbh->prepare('SELECT id, password_digest FROM USERS WHERE username = :username');
-			$sth->bindParam(':username', $username);
-			$sth->execute();
+			$username = $_POST["username"];
+			$password = $_POST["password"];
 
-			$result = $sth->fetch(PDO::FETCH_ASSOC);
-
-			if (password_verify($password, $result["password_digest"])) {
+			if (password_verify($password, $this->getPasswordDigest($username))) {
 				$_SESSION["logged_in"] = true;
-				$_SESSION["current_user"] = $result["id"];
+				$_SESSION["current_user"] = $this->getUserId($username);
 				$this->loginStamp();
 			} else {
 				$_SESSION["logged_in"] = false;
@@ -80,9 +74,10 @@ class User {
 		}
 	}
 
-	public function isAdmin($userId) {
+	public function isAdmin() {
 		try {
-			$sth = $this->dbh->prepare('SELECT role FROM USERS WHERE id = :id');
+			$userId = $_SESSION["current_user"];
+			$sth = $this->dbh->prepare("SELECT role FROM USERS WHERE id = :id");
 			$sth->bindParam(':id', $userId);
 			$sth->execute();
 
@@ -108,11 +103,41 @@ class User {
 		return $result;
 	}
 
+	private function getUserId($username) {
+		$sth = $this->dbh->prepare('SELECT id FROM USERS WHERE username = :username');
+		$sth->bindParam(':username', $username);
+		$sth->execute();
+		$result = $sth->fetch(PDO::FETCH_ASSOC);
+		return $result["id"];
+	}
+
+	private function getPasswordDigest($username) {
+		$sth = $this->dbh->prepare("SELECT password_digest FROM USERS WHERE username = :username");
+		$sth->bindParam(':username', $username);
+		$sth->execute();
+
+		$result = $sth->fetch(PDO::FETCH_ASSOC);
+		return $result["password_digest"];
+	}
+
 	private function loginStamp() {
 		$date = new DateTime();
 		$sql = "UPDATE USERS SET last_login = '" . $date->format('Y-m-d H:i:s') . "' WHERE id = " . $_SESSION["current_user"];
 		$stmt = $this->dbh->prepare($sql);
 		$stmt->execute();
+	}
+
+	private function currentUser() {
+		$sth = $this->dbh->prepare("SELECT * FROM USERS WHERE id = :id");
+		$sth->bindParam(':id', $_SESSION["current_user"]);
+		$sth->execute();
+
+		$result = $sth->fetch(PDO::FETCH_ASSOC);
+		return $result;
+	}
+
+	private function isAuthorized($username, $password) {
+		return password_verify($password, $this->getPasswordDigest($username));
 	}
 
 }
