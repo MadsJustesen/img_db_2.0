@@ -23,6 +23,7 @@ require '../views/header.php';
 		<div class="col-10">
 			<form name="editform" method="POST" action="edit_user" onsubmit="return validateEdit()">
 				<h3 class="header-tight">Change username</h3>
+				<?php echo '<input type="hidden" name="id" value="'. $_SESSION["current_user"] .'"/>'; ?> 
 				<input type="text" name="new_username" autofocus>
 				<br>
 				<label>New username</label>

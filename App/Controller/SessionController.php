@@ -13,7 +13,10 @@ class SessionController {
 	}
 
 	public function create() {
-		$this->user->logIn();	
+		$username = $_POST["username"];
+		$password = $_POST["password"];
+
+		$this->user->logIn($username, $password);	
 		$this->redirect("log_in");
 	}
 
@@ -30,17 +33,18 @@ class SessionController {
 	public function redirect($from = null) {
 		if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
 			$title = "Home";
+			$username = $this->user->getUsername();
 			require VIEW_DIR . '/pages/home.php';
 		} else {
 			switch($from) {
 				case "log_in":
-					echo 'Username or password was incorrect. Please try again.';
-					break;
+				echo 'Username or password was incorrect. Please try again.';
+				break;
 				case "log_out":
-					echo 'You have been logged out.';
-					break;
+				echo 'You have been logged out.';
+				break;
 				default:
-					break;
+				break;
 			}
 			$this->newSession();
 		}

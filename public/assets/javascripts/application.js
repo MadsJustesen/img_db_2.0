@@ -30,6 +30,7 @@ function validateSignUp() {
         document.getElementById("error-div").style.display = 'block';
         return false;
     }
+    return true;
 }
 
 // validate edit form
@@ -58,6 +59,7 @@ function validateEdit() {
         document.getElementById("error-div").style.display = 'block';
         return false;
     }
+    return true;
 }
 
 // register when window is scrolled

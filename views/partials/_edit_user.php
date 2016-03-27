@@ -6,9 +6,10 @@
 		</div>	
 		<div class="col-1"></div>
 		<div class="col-10">
-			<form name="signupform" method="POST" action="edit_user">
+			<form name="editform" method="POST" action="edit_user">
 				<h3 class="header-tight">Edit username</h3>
-				<input id="username" type="text" name="username" autofocus>
+				<?php echo '<input type="hidden" name="id" value="'. $_GET["id"] .'"/>'; ?> 
+				<input id="username" type="text" name="new_username" autofocus>
 				<br>
 				<label>New username</label>
 				<br>

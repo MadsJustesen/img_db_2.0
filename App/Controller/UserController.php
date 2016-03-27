@@ -17,6 +17,11 @@ class UserController {
 		$this->redirect();
 	}
 
+	public function destroy() {
+		$this->user->destroy();
+		$this->users();
+	}
+
 	public function update() {
 		$this->user->update();
 
