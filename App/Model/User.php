@@ -34,6 +34,11 @@ class User {
 	}
 
 	public function update() {
+		if(isset($_REQUEST["isAdmin"]) && !$this->isAdmin()) {
+				echo "<script>alert('Du er ikke registeret som admin');</script>";
+				return false;
+		}
+
 		try {
 			if(isset($_POST["new_username"]) && trim($_POST["new_username"]) != "") {
 				$username = $_POST["new_username"];
@@ -72,6 +77,7 @@ class User {
 			if (password_verify($password, $this->getPasswordDigest($username))) {
 				$_SESSION["logged_in"] = true;
 				$_SESSION["current_user"] = $this->getUserId($username);
+				$_SESSION["is_admin"] = $this->isAdmin();
 				$this->loginStamp();
 			} else {
 				$_SESSION["logged_in"] = false;

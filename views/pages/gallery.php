@@ -14,7 +14,7 @@ require '../views/header.php';
 			echo '<td>
 			<div class="image-container" style="overflow:hidden;">
 				<div class="image-header">
-					<h3>' . $image["title"] . '</h3>
+					<h3>' . htmlspecialchars($image["title"]) . '</h3>
 				</div>
 				<img src="data:image/jpeg;base64,' . base64_encode( $image["image"] ) . '"/>
 			</div>

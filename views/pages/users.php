@@ -33,7 +33,7 @@ require '../views/partials/_delete_user.php';
 						echo '<tr>';
 					}
 					echo '<td class="id">' . $user["id"] . '</td>';
-					echo '<td>' . $user["username"] . '</td>';
+					echo '<td>' . htmlspecialchars($user["username"]) . '</td>';
 					echo '<td>' . $user["role"] . '</td>';
 					echo '<td>' . $user["last_login"] . '</td>';
 					if($admin) {

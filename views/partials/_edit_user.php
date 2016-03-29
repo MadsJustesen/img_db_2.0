@@ -8,7 +8,8 @@
 		<div class="col-10">
 			<form name="editform" method="POST" action="edit_user">
 				<h3 class="header-tight">Edit username</h3>
-				<?php echo '<input type="hidden" name="id" value="'. $_GET["id"] .'"/>'; ?> 
+				<?php echo '<input type="hidden" name="id" value="'. $_GET["id"] .'"/>'; ?>
+				<input type="hidden" name="isAdmin" value="true" /> 
 				<input id="username" type="text" name="new_username" autofocus>
 				<br>
 				<label>New username</label>
