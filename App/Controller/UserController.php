@@ -64,6 +64,7 @@ class UserController {
 	public function afterCreate() {
 		if($_SESSION["logged_in"]) {
 			$title = "Home";
+			$username = $this->user->getUsername();
 			require VIEW_DIR . '/pages/home.php';
 		} else {
 			$title = "Sign Up";
@@ -73,6 +74,7 @@ class UserController {
 
 	private function isAuthorized() {
 		if(!$_SESSION["logged_in"]) {
+			$title = "Log in";
 			require VIEW_DIR . '/pages/log_in.php';
 			exit();
 		}

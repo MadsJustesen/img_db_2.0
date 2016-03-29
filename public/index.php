@@ -57,7 +57,7 @@ $router->addRoute('POST', '/sign_up',  		['App\\Controller\\UserController',    
 $router->addRoute('POST', '/delete_user',  	['App\\Controller\\UserController',    "destroy"	]);
 $router->addRoute('POST', '/edit_user',		['App\\Controller\\UserController',    "update"		]);
 $router->addRoute('POST', '/upload',   		['App\\Controller\\ImageController',   "save"		]);
-$router->addRoute('POST', '/delete',   		['App\\Controller\\ImageController',   "destroy"	]);
+$router->addRoute('POST', '/delete_image',  ['App\\Controller\\ImageController',   "destroy"	]);
 
 // Convert i.e. "/foo%40bar?id=1" to "/foo@bar"
 $uri = rawurldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));

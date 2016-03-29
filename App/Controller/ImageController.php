@@ -36,13 +36,14 @@ class ImageController {
 
 	public function destroy() {
 		$this->isAuthorized();
-		
+
 		$this->image->destroy();
 		$this->gallery();
 	}
 
 	private function isAuthorized() {
 		if(!$_SESSION["logged_in"]) {
+			$title = "Log in";
 			require VIEW_DIR . '/pages/log_in.php';
 			exit();
 		}
