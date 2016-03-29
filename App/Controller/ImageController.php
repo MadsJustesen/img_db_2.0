@@ -13,20 +13,40 @@ class ImageController {
 	}
 
 	public function upload() {
+		$this->isAuthorized();
+
 		$title = "Upload";
 		require VIEW_DIR . '/pages/upload.php';
 	}
 
-	public function show() {
+	public function gallery() {
+		$this->isAuthorized();
+
 		$images = $this->image->all();
 		$title = "Gallery";
 		require VIEW_DIR . '/pages/gallery.php';
 	}
 
 	public function save() {
+		$this->isAuthorized();
+
 		$this->image->save();
-		$title = "Upload";
-		require VIEW_DIR . '/pages/upload.php';
+		$this->upload();
+	}
+
+	public function destroy() {
+		$this->isAuthorized();
+
+		$this->image->destroy();
+		$this->gallery();
+	}
+
+	private function isAuthorized() {
+		if(!$_SESSION["logged_in"]) {
+			$title = "Log in";
+			require VIEW_DIR . '/pages/log_in.php';
+			exit();
+		}
 	}
 
 }

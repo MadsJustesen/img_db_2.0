@@ -50,13 +50,14 @@ $router->addRoute('GET', '/edit_user', 		['App\\Controller\\UserController',    
 $router->addRoute('GET', '/account',   		['App\\Controller\\UserController',    "account"	]);
 $router->addRoute('GET', '/users' ,	   		['App\\Controller\\UserController',	   "users"		]);
 $router->addRoute('GET', '/upload',	   		['App\\Controller\\ImageController',   "upload"		]);
-$router->addRoute('GET', '/gallery',   		['App\\Controller\\ImageController',   "show"		]);
+$router->addRoute('GET', '/gallery',   		['App\\Controller\\ImageController',   "gallery"	]);
 
 $router->addRoute('POST', '/log_in',   		['App\\Controller\\SessionController', "create"		]);
 $router->addRoute('POST', '/sign_up',  		['App\\Controller\\UserController',    "create"		]);
 $router->addRoute('POST', '/delete_user',  	['App\\Controller\\UserController',    "destroy"	]);
 $router->addRoute('POST', '/edit_user',		['App\\Controller\\UserController',    "update"		]);
 $router->addRoute('POST', '/upload',   		['App\\Controller\\ImageController',   "save"		]);
+$router->addRoute('POST', '/delete_image',  ['App\\Controller\\ImageController',   "destroy"	]);
 
 // Convert i.e. "/foo%40bar?id=1" to "/foo@bar"
 $uri = rawurldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));

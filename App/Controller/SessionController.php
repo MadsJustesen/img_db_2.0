@@ -26,6 +26,10 @@ class SessionController {
 	}
 
 	public function newSession() {
+		$this->redirect();
+	}
+
+	private function startSession() {
 		$title = "Log in";
 		require VIEW_DIR . '/pages/log_in.php';
 	}
@@ -46,7 +50,7 @@ class SessionController {
 				default:
 				break;
 			}
-			$this->newSession();
+			$this->startSession();
 		}
 	}
 

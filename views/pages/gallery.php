@@ -17,6 +17,12 @@ require '../views/header.php';
 					<h3>' . htmlspecialchars($image["title"]) . '</h3>
 				</div>
 				<img src="data:image/jpeg;base64,' . base64_encode( $image["image"] ) . '"/>
+				<div> 
+					<form name="deleteform" method="POST" action="delete_image">
+						<input type="hidden" name="id" value="' . $image["id"] . '"/>
+						<button type="Submit">Delete</button> 
+					</form>
+				</div>
 			</div>
 			</td>';
 

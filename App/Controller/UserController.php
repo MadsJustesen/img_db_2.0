@@ -14,15 +14,19 @@ class UserController {
 
 	public function create() {
 		$this->user->save();
-		$this->redirect();
+		$this->afterCreate();
 	}
 
 	public function destroy() {
+		$this->isAuthorized();
+
 		$this->user->destroy();
 		$this->users();
 	}
 
 	public function update() {
+		$this->isAuthorized();
+
 		$this->user->update();
 
 		$title = "Account";
@@ -35,11 +39,15 @@ class UserController {
 	}
 
 	public function edit() {
+		$this->isAuthorized();
+
 		$title = "Account";
 		require VIEW_DIR . '/pages/edit_user.php';
 	}
 
 	public function users() {
+		$this->isAuthorized();
+
 		$users = $this->user->all();
 		$title = "Users";
 		$admin = $this->user->isAdmin();
@@ -47,17 +55,28 @@ class UserController {
 	}
 
 	public function account() {
+		$this->isAuthorized();
+
 		$title = "Account";
 		require VIEW_DIR . '/pages/account.php';
 	}
 
-	public function redirect() {
+	public function afterCreate() {
 		if($_SESSION["logged_in"]) {
 			$title = "Home";
+			$username = $this->user->getUsername();
 			require VIEW_DIR . '/pages/home.php';
 		} else {
 			$title = "Sign Up";
 			require VIEW_DIR . '/pages/sign_up.php';
+		}
+	}
+
+	private function isAuthorized() {
+		if(!$_SESSION["logged_in"]) {
+			$title = "Log in";
+			require VIEW_DIR . '/pages/log_in.php';
+			exit();
 		}
 	}
 
