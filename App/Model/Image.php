@@ -29,6 +29,17 @@ class Image {
 		}
 	}
 
+	public function destroy () {
+		try {
+			$destroyImage = "DELETE FROM IMAGES WHERE id = " . $_POST["id"];
+			$stmt = $this->dbh->prepare($destroyImage);
+			$stmt->execute();
+		} catch (PDOException $e) {
+			print "Error!: " . $e->getMessage() . "<br/>";
+			die();
+		}
+	}
+
 	public function getByTitle($title = null) {
 		try {
 			$stmt = $this->dbh->prepare('SELECT contenttype, image FROM IMAGES WHERE title = ?');

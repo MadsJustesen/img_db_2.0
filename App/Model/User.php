@@ -58,8 +58,8 @@ class User {
 
 	public function destroy() {
 		try {
-			$updateUsername = "DELETE FROM USERS WHERE id = " . $_POST["id"];
-			$stmt = $this->dbh->prepare($updateUsername);
+			$destroyUser = "DELETE FROM USERS WHERE id = " . $_POST["id"];
+			$stmt = $this->dbh->prepare($destroyUser);
 			$stmt->execute();
 		} catch (PDOException $e) {
 			print "Error!: " . $e->getMessage() . "<br/>";

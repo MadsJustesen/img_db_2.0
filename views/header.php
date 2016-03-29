@@ -11,6 +11,8 @@
 	<button class="page-header" onclick="location.href='/'">
 		Image Database
 	</button>
+
+	<!-- Nav-bar -->
 	<?php 
 	if(isset($_SESSION["logged_in"]) && $_SESSION["logged_in"]) {
 		?>
@@ -37,5 +39,26 @@
 		</ul>
 	</div>
 	<?php 
+}
+?>
+
+<!-- Flash messages -->
+<?php 
+if(isset($successMessage)) {
+	?>
+	<div class="flash flash-success">
+		<h3><?php echo $successMessage; ?></h3>
+	</div>
+	<?php 
+}
+?>
+
+<?php 
+if(isset($errorMessage)) {
+	?>
+	<div class="flash flash-error">
+		<h3>Error! Something went horribly wrong :-(</h3>
+	</div>
+	<?php
 }
 ?>
