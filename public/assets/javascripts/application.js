@@ -80,3 +80,14 @@ function sticky_relocate() {
         $('#sticky-anchor').height(0);
     }
 }
+
+function saveNewTitle(id) {
+    console.log(id);
+    var new_title = $('#content_edit').html();
+    $.ajax({
+        url: '/update_new_image_title',
+        type: 'post',
+        data: {data: new_title, image_id: id},
+        datatype: 'html'
+    });
+}

@@ -17,7 +17,7 @@ class Image {
 
 			$image = fopen($_FILES['image']['tmp_name'], 'rb');
 
-			$stmt->bindParam(1, strip_tags($_REQUEST["title"]));
+			$stmt->bindParam(1, $_REQUEST["title"]);
 			$stmt->bindParam(2, $_FILES['image']['type']);
 			$stmt->bindParam(3, $image, PDO::PARAM_LOB);
 			$stmt->bindParam(4, $_SESSION["current_user"]);
@@ -26,6 +26,25 @@ class Image {
 		} catch (PDOException $e) {
 			print "Error!: " . $e->getMessage() . "<br/>";
 			die();
+		}
+	}
+
+	public function saveTitle(){
+		try{
+			$saveNewTitle = "UPDATE IMAGES SET title = ? WHERE id = ?";
+			$stmt = $this->dbh->prepare($saveNewTitle);
+
+			$title = $_POST['data'];
+			$id = $_POST['image_id'];
+
+			var_dump($title . "+" . $id);
+
+			$stmt->bindParam(1, $title);
+			$stmt->bindParam(2, $id);
+
+			$stmt->execute();
+		} catch(PDOException $e) {
+			print "Error!: " . $e->getMessage() . "<br/>";
 		}
 	}
 

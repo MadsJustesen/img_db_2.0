@@ -13,8 +13,8 @@ require '../views/header.php';
 		foreach ($images as $image) {
 			echo '<td>
 			<div class="image-container" style="overflow:hidden;">
-				<div class="image-header">
-					<h3>' . htmlspecialchars($image["title"]) . '</h3>
+				<div class="image-header" >
+					<h3 contenteditable="true" id="content_edit" onfocusout="saveNewTitle('. $image["id"] .')">' . htmlspecialchars($image["title"]) . '</h3>
 				</div>
 				<img src="data:image/jpeg;base64,' . base64_encode( $image["image"] ) . '"/>
 				<div> 
@@ -36,7 +36,6 @@ require '../views/header.php';
 		?>
 	</table>
 </div>
-
 <?php 
 require '../views/footer.php';
 ?>

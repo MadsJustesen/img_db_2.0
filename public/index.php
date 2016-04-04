@@ -42,22 +42,23 @@ $container->bindArguments('App\\Model\\Image', 	['dbh' => $dbh]);
 **************/
 
 $router = new Router();
-$router->addRoute('GET', '/',		   		['App\\Controller\\SessionController', "redirect"	]);
-$router->addRoute('GET', '/log_in',	  		['App\\Controller\\SessionController', "newSession"	]);
-$router->addRoute('GET', '/log_out',   		['App\\Controller\\SessionController', "destroy"    ]);
-$router->addRoute('GET', '/sign_up',   		['App\\Controller\\UserController',    "signUp"		]);
-$router->addRoute('GET', '/edit_user', 		['App\\Controller\\UserController',    "edit"		]);
-$router->addRoute('GET', '/account',   		['App\\Controller\\UserController',    "account"	]);
-$router->addRoute('GET', '/users' ,	   		['App\\Controller\\UserController',	   "users"		]);
-$router->addRoute('GET', '/upload',	   		['App\\Controller\\ImageController',   "upload"		]);
-$router->addRoute('GET', '/gallery',   		['App\\Controller\\ImageController',   "gallery"	]);
+$router->addRoute('GET', '/',		   		         ['App\\Controller\\SessionController', "redirect"	]);
+$router->addRoute('GET', '/log_in',	  		         ['App\\Controller\\SessionController', "newSession"]);
+$router->addRoute('GET', '/log_out',   		         ['App\\Controller\\SessionController', "destroy"   ]);
+$router->addRoute('GET', '/sign_up',   		         ['App\\Controller\\UserController',    "signUp"	]);
+$router->addRoute('GET', '/edit_user', 		         ['App\\Controller\\UserController',    "edit"		]);
+$router->addRoute('GET', '/account',   		         ['App\\Controller\\UserController',    "account"	]);
+$router->addRoute('GET', '/users' ,	   		         ['App\\Controller\\UserController',	"users"		]);
+$router->addRoute('GET', '/upload',	   		         ['App\\Controller\\ImageController',   "upload"	]);
+$router->addRoute('GET', '/gallery',   		         ['App\\Controller\\ImageController',   "gallery"	]);
 
-$router->addRoute('POST', '/log_in',   		['App\\Controller\\SessionController', "create"		]);
-$router->addRoute('POST', '/sign_up',  		['App\\Controller\\UserController',    "create"		]);
-$router->addRoute('POST', '/delete_user',  	['App\\Controller\\UserController',    "destroy"	]);
-$router->addRoute('POST', '/edit_user',		['App\\Controller\\UserController',    "update"		]);
-$router->addRoute('POST', '/upload',   		['App\\Controller\\ImageController',   "save"		]);
-$router->addRoute('POST', '/delete_image',  ['App\\Controller\\ImageController',   "destroy"	]);
+$router->addRoute('POST', '/log_in',   		         ['App\\Controller\\SessionController', "create"	]);
+$router->addRoute('POST', '/sign_up',  		         ['App\\Controller\\UserController',    "create"	]);
+$router->addRoute('POST', '/delete_user',  	         ['App\\Controller\\UserController',    "destroy"	]);
+$router->addRoute('POST', '/edit_user',		         ['App\\Controller\\UserController',    "update"	]);
+$router->addRoute('POST', '/upload',   		         ['App\\Controller\\ImageController',   "save"		]);
+$router->addRoute('POST', '/delete_image',  		 ['App\\Controller\\ImageController',   "destroy"	]);
+$router->addRoute('POST', '/update_new_image_title', ['App\\Controller\\ImageController', "saveNewTitle"]);
 
 // Convert i.e. "/foo%40bar?id=1" to "/foo@bar"
 $uri = rawurldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));

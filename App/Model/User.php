@@ -72,6 +72,10 @@ class User {
 		}
 	}
 
+	public function saveNewTitle(){
+		echo "<script>console.log('ny fra user.php');</script>";
+	}
+
 	public function logIn($username, $password) {
 		try {
 			if (password_verify($password, $this->getPasswordDigest($username))) {

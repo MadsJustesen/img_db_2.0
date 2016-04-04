@@ -34,6 +34,13 @@ class ImageController {
 		$this->upload();
 	}
 
+	public function saveNewTitle() {
+		$this->isAuthorized();
+
+		$this->image->saveTitle();
+		$this->gallery();
+	}
+
 	public function destroy() {
 		$this->isAuthorized();
 
