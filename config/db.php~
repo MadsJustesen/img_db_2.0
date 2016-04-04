@@ -1,5 +1,5 @@
 <?php 
 $db_host = '';
-$db_name = '';
+$db_name = 'ma_jes_img_db';
 $db_user = '';
 $db_pass = '';
