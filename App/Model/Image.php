@@ -34,6 +34,7 @@ class Image {
 			$saveNewTitle = "UPDATE IMAGES SET title=? WHERE id=?";
 			$stmt = $this->dbh->prepare($saveNewTitle);
 
+
 			$title = $_POST['data'];
 			$id = $_POST['image_id'];
 
