@@ -31,13 +31,11 @@ class Image {
 
 	public function saveTitle(){
 		try{
-			$saveNewTitle = "UPDATE IMAGES SET title = ? WHERE id = ?";
+			$saveNewTitle = "UPDATE IMAGES SET title=? WHERE id=?";
 			$stmt = $this->dbh->prepare($saveNewTitle);
 
 			$title = $_POST['data'];
 			$id = $_POST['image_id'];
-
-			var_dump($title . "+" . $id);
 
 			$stmt->bindParam(1, $title);
 			$stmt->bindParam(2, $id);

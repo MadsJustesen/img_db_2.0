@@ -83,7 +83,9 @@ function sticky_relocate() {
 
 function saveNewTitle(id) {
     console.log(id);
-    var new_title = $('#content_edit').html();
+    var new_title = $('#'.concat(id)).html();
+    console.log(new_title);
+    console.log('#'.concat(id));
     $.ajax({
         url: '/update_new_image_title',
         type: 'post',

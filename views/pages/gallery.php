@@ -14,7 +14,7 @@ require '../views/header.php';
 			echo '<td>
 			<div class="image-container" style="overflow:hidden;">
 				<div class="image-header" >
-					<h3 contenteditable="true" id="content_edit" onfocusout="saveNewTitle('. $image["id"] .')">' . htmlspecialchars($image["title"]) . '</h3>
+					<h3 contenteditable="true" id="'. $image["id"] .'" onfocusout="saveNewTitle('. $image["id"] .')">' . htmlspecialchars($image["title"]) . '</h3>
 				</div>
 				<img src="data:image/jpeg;base64,' . base64_encode( $image["image"] ) . '"/>
 				<div> 
